@@ -1,0 +1,2 @@
+# golib
+Useful Go routines.
