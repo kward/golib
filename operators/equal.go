@@ -1,8 +1,9 @@
 package operators
 
+// EqualSlices returns true if the slices are equal.
 func EqualSlices(x, y []interface{}) bool {
 	// Special cases.
-  switch {
+	switch {
 	case len(x) != len(y):
 		return false
 	}
