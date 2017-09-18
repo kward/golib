@@ -15,6 +15,9 @@ type MockFileInfo struct {
 	MockSys     interface{}
 }
 
+// Verify that ihe os.FileInfo interface is implemented properly.
+var _ coreos.FileInfo = new(MockFileInfo)
+
 func (m MockFileInfo) Name() string          { return m.MockName }
 func (m MockFileInfo) Size() int64           { return m.MockSize }
 func (m MockFileInfo) Mode() coreos.FileMode { return m.MockMode }
