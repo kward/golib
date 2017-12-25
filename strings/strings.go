@@ -21,7 +21,7 @@ func SplitNMerged(s string, sep string, n int) []string {
 	return merged
 }
 
-// Stretches a string to a given length by appending a character to the end.
+// Stretch a string to a given length by appending a character to the end.
 func Stretch(s string, r rune, l int) string {
 	// Special cases.
 	if len(s) >= l {

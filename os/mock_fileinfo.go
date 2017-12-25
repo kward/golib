@@ -18,9 +18,20 @@ type MockFileInfo struct {
 // Verify that ihe os.FileInfo interface is implemented properly.
 var _ coreos.FileInfo = new(MockFileInfo)
 
-func (m MockFileInfo) Name() string          { return m.MockName }
-func (m MockFileInfo) Size() int64           { return m.MockSize }
+// Name implements os.FileInfo interface.
+func (m MockFileInfo) Name() string { return m.MockName }
+
+// Size implements os.FileInfo interface.
+func (m MockFileInfo) Size() int64 { return m.MockSize }
+
+// Mode implements os.FileInfo interface.
 func (m MockFileInfo) Mode() coreos.FileMode { return m.MockMode }
-func (m MockFileInfo) ModTime() time.Time    { return m.MockModTime }
-func (m MockFileInfo) IsDir() bool           { return m.MockIsDir }
-func (m MockFileInfo) Sys() interface{}      { return m.MockSys }
+
+// ModTime implements os.FileInfo interface.
+func (m MockFileInfo) ModTime() time.Time { return m.MockModTime }
+
+// IsDir implements os.FileInfo interface.
+func (m MockFileInfo) IsDir() bool { return m.MockIsDir }
+
+// Sys implements os.FileInfo interface.
+func (m MockFileInfo) Sys() interface{} { return m.MockSys }
