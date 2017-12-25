@@ -1,7 +1,7 @@
 /*
-Package ioutil implements IO utility functions.
+Package os implements OS utility functions.
 */
-package ioutil
+package os
 
 import (
 	"io"
@@ -11,15 +11,15 @@ import (
 	"google.golang.org/grpc/codes"
 )
 
-// CopyFile copies a file, returning the number of bytes copied.
-func CopyFile(destName, srcName string) (int64, error) {
-	src, err := os.Open(srcName)
+// Copy a file, returning the number of bytes copied.
+func Copy(oldpath, newpath string) (int64, error) {
+	src, err := os.Open(oldpath)
 	if err != nil {
 		return -1, errors.Errorf(codes.InvalidArgument, "failure opening source; %s", err)
 	}
 	defer src.Close()
 
-	dest, err := os.Create(destName)
+	dest, err := os.Create(newpath)
 	if err != nil {
 		return -1, errors.Errorf(codes.InvalidArgument, "failure creating destination; %s", err)
 	}
