@@ -47,8 +47,8 @@ type Code int
 //go:generate stringer -type=Code
 
 const (
-	OK   Code = 0     // successful termination
-	Base      = Usage // base value for error messages
+	OK   Code = 0     // Successful termination.
+	Base      = Usage // Base value for error messages.
 )
 
 const (
