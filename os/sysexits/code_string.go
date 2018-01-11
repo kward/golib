@@ -6,7 +6,7 @@ import "strconv"
 
 const (
 	_Code_name_0 = "OK"
-	_Code_name_1 = "UsageDataErrorNoInputNoUserNoHostUnavailableSoftwareOSErrorOSFileCantCreateToErrorTempFailureProtocolNoPermissionConfig"
+	_Code_name_1 = "UsageDataErrorNoInputNoUserNoHostUnavailableSoftwareOSErrorOSFileCantCreateIOErrorTempFailureProtocolNoPermissionConfig"
 )
 
 var (

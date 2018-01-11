@@ -47,6 +47,11 @@ type Code int
 //go:generate stringer -type=Code
 
 const (
+	OK   Code = 0     // successful termination
+	Base      = Usage // base value for error messages
+)
+
+const (
 	Usage        Code = iota + 64 // Command-line usage error.
 	DataError                     // Data format error.
 	NoInput                       // Cannot open input.
@@ -57,23 +62,21 @@ const (
 	OSError                       // System error (e.g., can't fork).
 	OSFile                        // Critical OS file missing.
 	CantCreate                    // Can't create (user) output file.
-	ToError                       // Input/output error.
-	TempFailure                   // temp failure; user is invited to retry
-	Protocol                      // remote error in protocol
-	NoPermission                  // permission denied
-	Config                        // configuration error
+	IOError                       // Input/output error.
+	TempFailure                   // Temp failure; user is invited to retry.
+	Protocol                      // Remote error in protocol.
+	NoPermission                  // Permission denied.
+	Config                        // Configuration error.
 )
 
 const (
-	OK   Code = 0      // successful termination
-	Base      = Usage  // base value for error messages
-	Max       = Config // maximum listed value
+	Max Code = Config // Maximum listed value.
 
 	// Aliases for compatibility.
 	DataErr   = DataError
 	OSErr     = OSError
 	CantCreat = CantCreate
-	ToErr     = ToError
+	IOErr     = IOError
 	TempFail  = TempFailure
 	NoPerm    = NoPermission
 )
