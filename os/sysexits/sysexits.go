@@ -47,26 +47,26 @@ type Code int
 //go:generate stringer -type=Code
 
 const (
-	OK   Code = 0     // Successful termination.
-	Base      = Usage // Base value for error messages.
+	OK   Code = 0  // Successful termination.
+	Base      = 64 // Base value for error messages.
 )
 
 const (
-	Usage        Code = iota + 64 // Command-line usage error.
-	DataError                     // Data format error.
-	NoInput                       // Cannot open input.
-	NoUser                        // Addressee unknown.
-	NoHost                        // Host name unknown.
-	Unavailable                   // Service unavailable.
-	Software                      // Internal software error.
-	OSError                       // System error (e.g., can't fork).
-	OSFile                        // Critical OS file missing.
-	CantCreate                    // Can't create (user) output file.
-	IOError                       // Input/output error.
-	TempFailure                   // Temp failure; user is invited to retry.
-	Protocol                      // Remote error in protocol.
-	NoPermission                  // Permission denied.
-	Config                        // Configuration error.
+	Usage        Code = iota + Base // Command-line usage error.
+	DataError                       // Data format error.
+	NoInput                         // Cannot open input.
+	NoUser                          // Addressee unknown.
+	NoHost                          // Host name unknown.
+	Unavailable                     // Service unavailable.
+	Software                        // Internal software error.
+	OSError                         // System error (e.g., can't fork).
+	OSFile                          // Critical OS file missing.
+	CantCreate                      // Can't create (user) output file.
+	IOError                         // Input/output error.
+	TempFailure                     // Temp failure; user is invited to retry.
+	Protocol                        // Remote error in protocol.
+	NoPermission                    // Permission denied.
+	Config                          // Configuration error.
 )
 
 const (
