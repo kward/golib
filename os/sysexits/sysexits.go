@@ -15,7 +15,7 @@ import (
 
 func main() {
 	fmt.Println("Hello, world!")
-  os.Exit(sysexits.OK.Int())
+	os.Exit(sysexits.OK.Int())
 }
 ```
 
