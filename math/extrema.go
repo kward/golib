@@ -5,17 +5,21 @@ provided by default.
 package math
 
 // Max returns the larger of x or y.
-func Max(x, y int) int {
+func MaxInt(x, y int) int {
 	if x > y {
 		return x
 	}
 	return y
 }
 
+var Max = MaxInt
+
 // Min returns the smaller of x or y.
-func Min(x, y int) int {
+func MinInt(x, y int) int {
 	if x < y {
 		return x
 	}
 	return y
 }
+
+var Min = MinInt

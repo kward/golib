@@ -5,43 +5,43 @@ package math
 import "testing"
 
 func TestMaxInt(t *testing.T) {
-	var got, want int
-
-	want = 2
-
-	got = Max(1, 2)
-	if got != want {
-		t.Errorf("Max(int): got %v, want %v", got, want)
-	}
-
-	got = Max(2, 2)
-	if got != want {
-		t.Errorf("Max(int): got %v, want %v", got, want)
-	}
-
-	got = Max(2, 1)
-	if got != want {
-		t.Errorf("Max(int): got %v, want %v", got, want)
+	for _, tt := range []struct {
+		desc string
+		a, b int
+		want int
+	}{
+		{"equal", 2, 2, 2},
+		{"max_is_a", 2, 1, 2},
+		{"max_is_b", 1, 2, 2},
+	} {
+		a, b := tt.a, tt.b
+		if got, want := MaxInt(tt.a, tt.b), tt.want; got != want {
+			t.Errorf("%s: MaxInt(%d, %d) = %d, want %d", tt.desc, a, b, got, want)
+		}
+		// Ensure backward compatibility (until all references are removed).
+		if got, want := Max(tt.a, tt.b), tt.want; got != want {
+			t.Errorf("%s: Max(%d, %d) = %d, want %d", tt.desc, a, b, got, want)
+		}
 	}
 }
 
 func TestMinInt(t *testing.T) {
-	var got, want int
-
-	want = 1
-
-	got = Min(1, 2)
-	if got != want {
-		t.Errorf("Max(int): got %v, want %v", got, want)
-	}
-
-	got = Min(1, 1)
-	if got != want {
-		t.Errorf("Max(int): got %v, want %v", got, want)
-	}
-
-	got = Min(2, 1)
-	if got != want {
-		t.Errorf("Max(int): got %v, want %v", got, want)
+	for _, tt := range []struct {
+		desc string
+		a, b int
+		want int
+	}{
+		{"equal", 1, 1, 1},
+		{"min_is_a", 1, 2, 1},
+		{"min_is_b", 2, 1, 1},
+	} {
+		a, b := tt.a, tt.b
+		if got, want := MinInt(tt.a, tt.b), tt.want; got != want {
+			t.Errorf("%s: MinInt(%d, %d) = %d, want %d", tt.desc, a, b, got, want)
+		}
+		// Ensure backward compatibility (until all references are removed).
+		if got, want := Min(tt.a, tt.b), tt.want; got != want {
+			t.Errorf("%s: Min(%d, %d) = %d, want %d", tt.desc, a, b, got, want)
+		}
 	}
 }
