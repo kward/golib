@@ -9,16 +9,20 @@ import (
 
 func TestSplitNMerged(t *testing.T) {
 	for _, tc := range []struct {
+		desc string
 		str  string
 		sep  string
 		cols int
 		want []string
 	}{
-		{"1 2 3", " ", -1, []string{"1", "2", "3"}},
-		{"1 2   3", " ", -1, []string{"1", "2", "3"}},
-		{"", " ", -1, []string{}},
+		{"auto col narrow", "1 2 3", " ", -1, []string{"1", "2", "3"}},
+		{"auto col wide", "1   2   3", " ", -1, []string{"1", "2", "3"}},
+		{"one col narrow", "1 2 3", " ", 1, []string{"1 2 3"}},
+		{"two col narrow", "1 2 3", " ", 2, []string{"1", "2 3"}},
+		{"three col narrow", "1 2 3", " ", 3, []string{"1", "2", "3"}},
+		{"empty", "", " ", -1, []string{}},
 	} {
-		t.Run(fmt.Sprintf("SplitNMerged()"), func(t *testing.T) {
+		t.Run(fmt.Sprintf("SplitNMerged() %s", tc.desc), func(t *testing.T) {
 			got, want := SplitNMerged(tc.str, tc.sep, tc.cols), tc.want
 			if !operators.EqualSlicesOfString(want, got) {
 				t.Errorf("SplitNMerged(): want %v, got %v", want, got)
