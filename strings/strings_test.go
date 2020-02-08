@@ -15,17 +15,20 @@ func TestSplitNMerged(t *testing.T) {
 		cols int
 		want []string
 	}{
-		{"auto col narrow", "1 2 3", " ", -1, []string{"1", "2", "3"}},
-		{"auto col wide", "1   2   3", " ", -1, []string{"1", "2", "3"}},
-		{"one col narrow", "1 2 3", " ", 1, []string{"1 2 3"}},
-		{"two col narrow", "1 2 3", " ", 2, []string{"1", "2 3"}},
-		{"three col narrow", "1 2 3", " ", 3, []string{"1", "2", "3"}},
-		{"empty", "", " ", -1, []string{}},
+		{"auto col narrow", "1 22 333", " ", -1, []string{"1", "22", "333"}},
+		{"auto col wide", "1   22   333", " ", -1, []string{"1", "22", "333"}},
+		{"one col narrow", "1 22 333", " ", 1, []string{"1 22 333"}},
+		{"one col wide", "1   22   333", " ", 1, []string{"1   22   333"}},
+		{"two col narrow", "1 22 333", " ", 2, []string{"1", "22 333"}},
+		{"two col wide", "1   22   333", " ", 2, []string{"1", "22   333"}},
+		{"three col narrow", "1 22 333", " ", 3, []string{"1", "22", "333"}},
+		{"three col wide", "1   22   333", " ", 3, []string{"1", "22", "333"}},
+		{"empty", "", " ", -1, []string{""}},
 	} {
 		t.Run(fmt.Sprintf("SplitNMerged() %s", tc.desc), func(t *testing.T) {
 			got, want := SplitNMerged(tc.str, tc.sep, tc.cols), tc.want
 			if !operators.EqualSlicesOfString(want, got) {
-				t.Errorf("SplitNMerged(): want %v, got %v", want, got)
+				t.Errorf("SplitNMerged(): want %q, got %q", want, got)
 			}
 		})
 	}
